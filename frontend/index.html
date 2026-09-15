@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OralScan – Oral Cancer Detection Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="2"/><path d="M14 6V22M6 14H22" stroke="currentColor" stroke-width="2"/></svg></span>
+      <span class="brand-name">OralScan</span>
+    </div>
+    <p class="brand-tag">Histopathology screening assistant</p>
+  </header>
+  <main>
+    <div class="notice" role="note"><strong>Research &amp; educational use only.</strong> This is a student prototype built for a college project. It is not a certified medical device and must not be used for real clinical decisions — any real diagnosis must come from a certified pathologist.</div>
+    <section class="intro"><h1>Check a histopathology image for signs of OSCC</h1><p>Upload a slide image below. The model will screen it and return a prediction with a confidence score.</p></section>
+    <section class="panel" aria-labelledby="uploadHeading">
+      <h2 id="uploadHeading" class="sr-only">Upload image</h2>
+      <div class="dropzone" id="dropzone">
+        <span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span>
+        <input type="file" id="fileInput" accept="image/png, image/jpeg" hidden>
+        <div class="dz-empty" id="dzEmpty">
+          <svg class="dz-icon" width="38" height="38" viewBox="0 0 40 40" fill="none"><path d="M20 26V10M20 10L14 16M20 10L26 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 28V30C8 31.1 8.9 32 10 32H30C31.1 32 32 31.1 32 30V28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <p class="dz-text">Drag &amp; drop an image, or</p><button type="button" class="btn btn-outline" id="browseBtn">Browse files</button><p class="dz-hint">JPG or PNG</p>
+        </div>
+        <div class="dz-preview" id="dzPreview" hidden><img id="previewImg" alt="Uploaded specimen image"><div class="scan-line" id="scanLine" hidden></div></div>
+      </div>
+      <div class="panel-actions"><button type="button" class="btn btn-primary" id="analyzeBtn" disabled>Analyze image</button><button type="button" class="btn btn-text" id="clearBtn" hidden>Choose a different image</button></div>
+      <p class="status-text" id="statusText" role="status" aria-live="polite"></p>
+    </section>
+    <section class="panel result-panel" id="resultPanel" hidden aria-labelledby="resultHeading">
+      <h2 id="resultHeading" class="sr-only">Analysis result</h2>
+      <div class="result-top"><span class="badge" id="resultBadge">Normal</span><div class="ring"><svg viewBox="0 0 132 132" width="132" height="132"><line class="ring-tick" x1="124" y1="66" x2="118" y2="66"/><line class="ring-tick" x1="66" y1="124" x2="66" y2="118"/><line class="ring-tick" x1="8" y1="66" x2="14" y2="66"/><line class="ring-tick" x1="66" y1="8" x2="66" y2="14"/><circle class="ring-track" cx="66" cy="66" r="52"/><circle class="ring-fill" id="ringFill" cx="66" cy="66" r="52"/></svg><div class="ring-label"><span id="confidenceValue">0%</span><small>confidence</small></div></div></div>
+      <p class="result-note" id="resultNote"></p><p class="disclaimer">This result comes from a demo model built for a college project. It is not a certified diagnosis and must not be used for real clinical decisions — consult a certified pathologist.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><p>Oral Cancer Detection Web App · Academic project, Dharmsinh Desai University</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>

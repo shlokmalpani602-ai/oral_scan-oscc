@@ -1,0 +1,13 @@
+{
+    "model": "Random Forest",
+    "feature_extractor": "microsoft/beit-base-patch16-224",
+    "feature_representation": "CLS token",
+    "total_dataset_images": 1224,
+    "normal_images": 290,
+    "oscc_images": 934,
+    "selected_feature_count": 200,
+    "classification": {
+        "0": "Normal",
+        "1": "OSCC"
+    }
+}
